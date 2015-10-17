@@ -3,10 +3,6 @@
 <head>
     <title>Login template</title>
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0;" />
-    
-    
-    
-    
     <script src="cordova.js" id="xdkJScordova_"></script>
 	<script type="text/javascript" src="js/libraries/angular.min.js"></script>
     <script type="text/javascript" src="js/libraries/angular-route.min.js"></script>
@@ -33,100 +29,29 @@
     </script>
     <script src="js/init-app.js"></script>
     <script src="xdk/init-dev.js"></script>
-    <script src="js/controller.js"></script>
-    <script src="js/singin_singup_handler.js"></script>
-    <script src="js/record_handler.js"></script>
-    <script src="js/image_handler.js"></script>
-    <script src="js/login_handler.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/app/quote.js"></script>
     <link rel="stylesheet" type="text/css" href="appframework/af.ui.css" />
     <link rel="stylesheet" type="text/css" href="appframework/icons.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     
     <link rel="stylesheet" type="text/css" href="css/my_grid_style.css" />
 </head>
 <body ng-app="portalMobile"> 
 <div id="afui" class="default">
-    <div id="splashscreen" class='ui-loader heavy'>
-        Life is simple
-        <br><br>
-        <span class='ui-icon ui-icon-loading spin'></span><h1 >Starting app</h1>
-    </div>
     <div ng-include src="'templates/main/sidebar.html'"></div>
-    <aside>
-        <header class="header">
-            <h1>Icons</h1>
-            <a class="button icon settings"></a>
-        </header>
-        <ul class="list">
-            <li class="divider">Icons</li> 
-            <li><a  class="icon home big">Home</a></li>
-            <li><a  class="icon pencil big">Pencil</a></li>
-            <li><a  class="icon picture big">Picture</a></li>
-            <li><a  class="icon camera big">Camera</a></li>
-            <li><a  class="icon headset big">Headset</a></li>
-        </ul>
-    </aside>
-    <!-- custom header -->
-
-    <!-- Views -->
-        
-        <!-- Welcome View -->
-        <div class="panel" title="Welcome" id="page1" data-header="none" data-footer="none">
-            <div style="text-align:center">
-            <br>
-            <br>
-            <h1>Welcome</h1>
-            <br>
-            <br>
-            <p>This is space for welcome message</p>
-            <br>
-            <br>
-            </div>    
-            <ul class="list inset">
-                <li><a href="#signin" class="icon user" style="text-align:center">Login</a></li>
-                <li><a href="#signup" class="icon pencil" style="text-align:center">Register</a></li>
-            </ul>
-        </div>
-        <div id="af30" class="panel" title=".os">
-            <p>$.os - holds information about the OS of the device, and if it is a webkit browser</p>
-            <br>
-            <div class="samplecode" > 
-                $.os.webkit  = <script>document.write($.os.webkit);</script><br>
-                $.os.android = <script>document.write($.os.android);</script><br>
-                $.os.androidICS  = <script>document.write($.os.androidICS);</script><br>
-                $.os.ipad = <script>document.write($.os.ipad);</script><br>
-                $.os.iphone = <script>document.write($.os.iphone);</script><br>
-                $.os.ios = <script>document.write($.os.ios);</script><br>
-                $.os.ios7 = <script>document.write($.os.ios7);</script><br>
-                $.os.webos = <script>document.write($.os.webos);</script><br>
-                $.os.touchpad = <script>document.write($.os.touchpad);</script><br>
-                $.os.playbook = <script>document.write($.os.playbook);</script><br>
-                $.os.blackberry = <script>document.write($.os.blackberry);</script><br>
-                $.os.blackberry10 = <script>document.write($.os.blackberry10);</script><br>
-                $.os.chrome = <script>document.write($.os.chrome);</script><br>
-                $.os.opera = <script>document.write($.os.opera);</script><br>
-                $.os.fennec = <script>document.write($.os.fennec);</script><br>
-                $.os.ie = <script>document.write($.os.ie);</script><br>
-                $.os.ieTouch = <script>document.write($.os.ieTouch);</script><br>
-                $.os.supportsTouch = <script>document.write($.os.supportsTouch);</script><br>
-                $.os.tizen  = <script>document.write($.os.tizen);</script><br>
-            </div>
-        </div>
-        
-        <!-- Main App View -->
-        <div class="panel" title="Trang chu" data-tab="navbar_home" selected="true" id="main" data-load="startApp">
-            <header>
-                <h1>Trang chu</h1>
-                <a onclick='$.ui.toggleLeftSideMenu()' class='button icon settings' style="float:left"></a>
-            </header>
-			<input ng-model="username">
-			{{username}}
-            <p>Trang chu</p>
-        </div>
-        
-        
+    <!-- Include file auto detect os device-->
+     <div ng-include src="'templates/main/detect_os.html'"></div> 
+  
+    <div ng-include src="'templates/main/header.html'"></div> 
+    <!-- Khu vực này sẽ render ra các view theo điều hướng của action-->
+        <ng-view></ng-view> 
+    <!--End-->
+    a
+    <div ng-include src="'templates/main/footer.html'"></div>   
     </div>
-
 
 </div>
 </body>
