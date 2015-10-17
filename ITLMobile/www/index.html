@@ -43,13 +43,12 @@
 <div id="afui" class="default">
     <div ng-include src="'templates/main/sidebar.html'"></div>
     <!-- Include file auto detect os device-->
-     <div ng-include src="'templates/main/detect_os.html'"></div> 
+    <div ng-include src="'templates/main/detect_os.html'"></div> 
   
-    <div ng-include src="'templates/main/header.html'"></div> 
-    <!-- Khu vực này sẽ render ra các view theo điều hướng của action-->
+    <div ng-include src="'templates/main/header.html'"></div>
+    <!-- Khu vực này sẽ render ra các view theo điều hướng của route-->
         <ng-view></ng-view> 
     <!--End-->
-    a
     <div ng-include src="'templates/main/footer.html'"></div>   
     </div>
 
