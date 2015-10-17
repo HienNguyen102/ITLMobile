@@ -8,8 +8,8 @@
     
     
     <script src="cordova.js" id="xdkJScordova_"></script>
-    <script src="js/angular-route.min.js"></script>
-    <script src="js/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/libraries/angular.min.js"></script>
+    <script type="text/javascript" src="js/libraries/angular-route.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="appframework/appframework.ui.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="appframework/plugins/af.slidemenu.js"></script>
     <script type="text/javascript">
@@ -38,38 +38,20 @@
     <script src="js/record_handler.js"></script>
     <script src="js/image_handler.js"></script>
     <script src="js/login_handler.js"></script>
+    <script src="js/app.js"></script>
     <link rel="stylesheet" type="text/css" href="appframework/af.ui.css" />
     <link rel="stylesheet" type="text/css" href="appframework/icons.css" />
     
     <link rel="stylesheet" type="text/css" href="css/my_grid_style.css" />
 </head>
-<body> 
+<body ng-app="portalMobile"> 
 <div id="afui" class="default">
     <div id="splashscreen" class='ui-loader heavy'>
         Life is simple
         <br><br>
         <span class='ui-icon ui-icon-loading spin'></span><h1 >Starting app</h1>
     </div>
-    <nav id="default_sidemenu" title="Settings">
-        <ul class="list">
-            <li class="divider">UI Themes</li>
-                <li><a class="theme theme-none" href="index.html" data-ignore="true">Auto detect theme</a></li>
-                <li><a class="theme theme-default" href="index.html?default" data-ignore="true">Default theme</a></li>
-                <li><a class="theme theme-ios" href="index.html?ios" data-ignore="true">iOS theme (iOS6 and previous)</a></li>
-                <li><a class="theme theme-ios7" href="index.html?ios7" data-ignore="true">iOS 7 theme</a></li>
-                <li><a class="theme theme-android" href="index.html?android" data-ignore="true">Android dark theme</a></li>
-                <li><a class="theme theme-android-light" href="index.html?android-light" data-ignore="true">Android light theme</a></li>
-                <li><a class="theme theme-win8" href="index.html?win8" data-ignore="true">Windows Phone 8 dark theme</a></li>
-                <li><a class="theme theme-win8-light" href="index.html?win8-light" data-ignore="true">Windows Phone 8 light theme</a></li>
-                <li><a class="theme theme-bb" href="index.html?bb" data-ignore="true">BlackBerry 10 theme</a></li>
-            <li class="divider">Menus</li>
-                <li><a href="#main" class="icon home">Trang chu</a></li>
-                <li><a href="#gridview" class="icon camera" id="mn_photo">Hinh anh</a></li>
-                <li><a href="#listview" class="icon mic" id="mn_record">Ghi am</a></li>
-                <li><a href="#page4" class="icon info">Thong tin</a></li>
-                <li><a href="#" class="icon key" id="mn_logout">Dang xuat</a></li>
-        </ul>
-    </nav>
+    <div ng-include src="'templates/main/sidebar.html'"></div>
     <aside>
         <header class="header">
             <h1>Icons</h1>
@@ -85,12 +67,7 @@
         </ul>
     </aside>
     <!-- custom header -->
-    <header id="custom_header">
-        <h1>Custom Header</h1>
-        <a onclick="$.ui.goBack()" class='button'>Go Back</a>
-        <a class='button' style="float:right">Settings</a>
-    </header>
-    <div id="content">
+
     <!-- Views -->
         
         <!-- Welcome View -->
@@ -136,128 +113,20 @@
             </div>
         </div>
         
-        <!-- Login View -->
-        <div class="panel" title="Login" id="signin" data-footer="none">
-            <div style="text-align:center">
-            <br>
-            <br>
-            <p>This is space for login message</p>
-            <br>
-            <br>
-            </div>
-            <input name="username" type="text" placeholder="username" id="username_log" value="hien"/>
-            <input name="password" type="password" placeholder="password" id="password_log" value="hien"/>
-            <a class="button block green" href="#" id="login">Login</a>
-        </div>
-        
-        <!-- Register View -->
-        <div class="panel" title="Register" id="signup" data-footer="none">
-            <div style="text-align:center">
-            <br>
-            <br>
-            <p>This is space for register message</p>
-            <br>
-            <br>
-            </div>
-            <input name="name" type="text" placeholder="Name" />
-            <input name="email" type="text" placeholder="Email" />
-            <input name="username" type="text" placeholder="username" id="username_reg"/>
-            <input name="password" type="password" placeholder="password" id="password_reg"/>
-            <input name="password2" type="password" placeholder="confirm password" id="password_reg_retype"/>
-            <a class="button block green" href="#" id="register">Register</a>
-        </div>
-        
         <!-- Main App View -->
         <div class="panel" title="Trang chu" data-tab="navbar_home" selected="true" id="main" data-load="startApp">
             <header>
                 <h1>Trang chu</h1>
                 <a onclick='$.ui.toggleLeftSideMenu()' class='button icon settings' style="float:left"></a>
             </header>
+			<input ng-model="username">
+			{{username}}
             <p>Trang chu</p>
         </div>
         
-        <div class="panel" title="Hinh anh" id="gridview" data-footer="none">
-            <header>
-                <h1>Hinh Anh</h1>
-                <a onclick='$.ui.toggleLeftSideMenu()' class='button icon settings' style="float:left"></a> 
-                <a href="#" class="button icon add" style="float:right" id="btn_add_photo"></a>
-            </header>
-            <div class="grid-photo">
-            </div>
-            <a id="btn_load_more_image" class="button block" onclick="loadNext()">Load More</a>
-            <p id="empty_photo">You have no photo.</p>
-        </div>
-        <div class="panel" title="Chup hinh" id="photo_action" data-footer="none">
-            <div class="photo-img">
-                <img id="picture" src="">
-            </div>
-            <input name="issue" type="text" placeholder="issue" id="photo_issue"/>
-            <a class="button block green" href="#" id="btn_take_pic">Take picture</a>
-            <a class="button block green" href="#" id="btn_import_pic">Import</a>
-            <a class="button block green" href="#" id="btn_upload_pic">Upload</a>
-        </div>
-        
-        <div class="panel" title="Ghi am" id="listview" data-footer="none">
-            <header>
-                <a onclick='$.ui.toggleLeftSideMenu()' class='button icon settings' style="float:left"></a>
-                <h1>Ghi am</h1>
-                <a href="#" class="button icon add" style="float:right" id="btn_add_record"></a>
-            </header>
-            <ul class="list" id="dataList">
-                
-            </ul>
-            <p id="empty_record">You have no record.</p>
-        </div>
-        <div class="panel" title="Thuc Hien Ghi Am" id="record_action" data-footer="none">
-            <!--<header>
-                <h1>Ghi Am Nao</h1>
-                <a onclick='$.ui.toggleLeftSideMenu()' class='button icon settings' style="float:left"></a> 
-            </header>-->
-            <!--<div class="photo-img">
-                <img id="picture" src="">
-            </div>-->
-            
-            <div class="photo-img">
-             <img id="startRecID" src="my_images/simplemicrophone_rec.png" onclick="startRecording()"></img> 
-            </div>
-            <div style="text-align:center">
-                <a id="stopRecID" style="display:none" onclick="stopRecording()" class="button red">Stop</a>
-            </div>
-            <p id="RecStatusID" style="text-align:center">Status: </p>
-            <p id="media_rec_pos" style="text-align:center">Recording Position 00:00:00</p>
-            <div style="text-align:center">
-                <div class="subtitle">Playback Audio</div>
-                <div class="button-grouped flex">
-                    <a id="startPlayID" onclick="playMusic()" class="button blue">Play</a><a id="pausePlayID" onclick="pauseMusic()" class="button blue">Pause</a><a id="stopPlayID" onclick="stopMusic()" class="button red">Stop</a>
-                </div>
-                <div class="button-grouped flex">
-                    <a id="upload_record" onclick="uploadRecord()" class="button blue">Upload</a>
-                </div>
-                <p id="PlayStatusID">Status: </p>
-                <p id="media_pos">Playback Position 00:00:00</p>
-            </div>
-        
-            <input name="issue" type="text" placeholder="issue" id="record_issue"/>
-        </div>
-        
-        <div class="panel" title="Thong tin" id="page4" data-footer="none">
-            <header>
-                <a onclick='$.ui.toggleLeftSideMenu()' class='button icon settings' style="float:left"></a>
-                <h1>Thong tin</h1>
-            </header>
-            <p>This is view for fourth Tab</p>
-        </div>
         
     </div>
-    <a href="listview.html">Click</a>
-    <!-- default footer -->
-    <div id="navbar">
-        <a href="#main" id='navbar_home' class='icon home' data-transition="none">Home</a>
-        <a href="#af" id='navbar_af' class="icon target" data-transition="none">Selector</a>
-        <a href="#afuidemo" id='navbar_ui' class="icon picture" data-transition="none">AF UI</a>
-        <a href="#afweb" id='navbar_plugins' class="icon key" data-transition="none">Plugins</a>
-        <a href="#deviceapi" id='navbar_deviceapi' class="icon camera" data-transition="none">Device</a>
-    </div>
+
 
 </div>
 </body>
