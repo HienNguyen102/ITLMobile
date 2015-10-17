@@ -2,7 +2,7 @@
 app.config(function($routeProvider) {
     $routeProvider
       .when('/', {
-        template: '<h1>Xin chào, tôi là trang chủ</h1>',
+        templateUrl: 'templates/main/home.html',
       })
       .when('/quote', {
         templateUrl: 'templates/quote/listview.html',
