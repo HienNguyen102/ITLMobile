@@ -2,16 +2,14 @@
 <html>
 <head>
     <title>Login template</title>
-<!--
-    This template can be used for creating apps that require user login and user registration before starting actual app.
---> 
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0;" />
     
     
     
     
     <script src="cordova.js" id="xdkJScordova_"></script>
-    
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="appframework/appframework.ui.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="appframework/plugins/af.slidemenu.js"></script>
     <script type="text/javascript">
@@ -33,9 +31,6 @@
             });
         }  
     </script>
-<!-- Required if packaging to native app using Intel XDK -->    
-    <!--<script src="intelxdk.js"></script>
-    <script src="xhr.js"></script>-->
     <script src="js/init-app.js"></script>
     <script src="xdk/init-dev.js"></script>
     <script src="js/controller.js"></script>
@@ -254,6 +249,7 @@
         </div>
         
     </div>
+    <a href="listview.html">Click</a>
     <!-- default footer -->
     <div id="navbar">
         <a href="#main" id='navbar_home' class='icon home' data-transition="none">Home</a>
